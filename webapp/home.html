@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаба: webApp</title>
+</head>
+<body>
+<p>Пример, как должен рабоать/запускаться сервер</p>
+<pre>
+public class ServerITest {
+@Test
+public void testServer() {
+Server server = new Server();
+server.setPort(3000);
+server.setWebAppPath("wabapp");
+server.start();
+}
+}
+</pre>
+</body>
+</html>
