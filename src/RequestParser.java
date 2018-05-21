@@ -16,7 +16,7 @@ public class RequestParser {
 
     public static void injectUriANdMethod(Request request, String line) {
         String[] array = line.split(" ");
-        request.setUri(array[1]);
+        request.setUri(array[1].substring(1));
         try {
             request.setMethod(HttpMethod.getByName(array[0]));
         } catch (Exception e) {
@@ -27,7 +27,7 @@ public class RequestParser {
     public static void injectHeaders(Request request, BufferedReader reader) throws IOException {
         String line;
         Map<String, String> map = new HashMap<>();
-        while ((line = reader.readLine()) != null ) {
+        while ((line = reader.readLine()).isEmpty() ) {
             String[] array = line.split(": ");
             map.put(array[0], array[1]);
         }

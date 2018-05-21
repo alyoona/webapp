@@ -11,18 +11,14 @@ public class Server {
     public void start() throws IOException {
 
         serverSocket = new ServerSocket(port);
-
-        while (true) {
-            clientSocket = serverSocket.accept();
-
-            BufferedReader socketReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            BufferedWriter socketWriter = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-
+        clientSocket = serverSocket.accept();
+        try (BufferedReader socketReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+             BufferedWriter socketWriter = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))
+        ) {
             RequestHandler handler = new RequestHandler(socketReader, socketWriter, webAppPath);
             handler.handle();
-
-            //?? clientSocket.close();
         }
+        //?? clientSocket.close();
     }
 
     public void setPort(int port) {
