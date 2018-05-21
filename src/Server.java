@@ -27,8 +27,5 @@ public class Server {
 
     public void setWebAppPath(String webAppPath) {
         this.webAppPath = webAppPath;
-
     }
-
-
 }
