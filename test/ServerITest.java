@@ -1,9 +1,10 @@
+
 import org.junit.Test;
 
 import java.io.IOException;
 
 public class ServerITest {
-    @Test
+ @Test
     public void testServer() throws IOException {
         Server server = new Server();
         server.setPort(3000);
